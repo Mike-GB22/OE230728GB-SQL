@@ -84,7 +84,7 @@ SELECT *
 FROM test_a
 WHERE id NOT IN (SELECT * FROM test_b);
 
--- -- Третий шаг, выводим те id которых нет во второй таблице, но НЕ используем NOT
+-- -- Третий шаг, выводим те id которых НЕТ во второй таблице, но НЕ используем NOT
 SELECT id, dat
 FROM (  
 	SELECT t1.id AS id, dat, t2.id AS id2 
@@ -92,6 +92,3 @@ FROM (
 	LEFT JOIN test_b t2
 	ON t1.id = t2.id) AS temptable
 WHERE id2 is NULL;
-    
-    SELECT *
-FROM (SELECT * FROM test_a);
